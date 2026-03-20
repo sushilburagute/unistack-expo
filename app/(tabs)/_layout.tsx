@@ -3,7 +3,6 @@ import { SymbolView } from 'expo-symbols';
 import { Link, Tabs } from 'expo-router';
 import { Platform, Pressable } from 'react-native';
 
-import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 
@@ -13,7 +12,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: colorScheme === 'dark' ? '#fff' : '#2f95dc',
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
@@ -40,7 +39,7 @@ export default function TabLayout() {
                   <SymbolView
                     name={{ ios: 'info.circle', android: 'info', web: 'info' }}
                     size={25}
-                    tintColor={Colors[colorScheme].text}
+                    tintColor={colorScheme === 'dark' ? '#fff' : '#000'}
                     style={{ opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
